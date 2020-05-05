@@ -1,4 +1,5 @@
 # Longhurst-Province-Finder
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3786234.svg)](https://doi.org/10.5281/zenodo.3786234)
 
 Takes a tsv file in format sampleID\tlatitude\tlongitude\n" and 
 returns an output with with Longhurst codes and the description of
