@@ -10,6 +10,24 @@ input coordinate and seeing how many crossings the line makes with the polygon b
 If there is an odd number of crossings, the point is within the polygon, otherwise the
 point is outside the polygon.
 
+## coord2longhurst.py
+```python
+python coord2longhurst.py 45 -138
+```
+
+Returns:
+`45.0 N,  -138.0 E -->   NPPF 	 Westerlies - N. Pacific Polar Front Province`
+
+## coord2longhurst_batch.py
+```python
+python coord2longhurst_batch.py 2longhurst.tsv longhurst_codes.tsv
+```
+Returns:
+`S0001	49.7225	-42.4467	NADR	Westerlies	N. Atlantic Drift Province (WWDR)
+...
+S0008	46.312	-39.658	NADR	Westerlies	N. Atlantic Drift Province (WWDR)
+...`
+
 Original script from:
 @ Sara Collins.  MIT.  3/18/2015
 https://github.com/thechisholmlab/Longhurst-Province-Finder
