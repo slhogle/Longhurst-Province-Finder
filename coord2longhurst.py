@@ -24,9 +24,12 @@ out:
 	Longhurst province code and name where the coordinate can be found. 
 	If the coordinate is on land, or otherwise unassociated with a province, 
 		a list of candidate provinces to check manually will be returned.
-		
-@ Sara Collins.  MIT.  3/18/2015
 
+Command: python coord2longhurst.py 45 -138
+Returns: 45.0 N,  -138.0 E -->   NPPF 	 Westerlies - N. Pacific Polar Front Province
+
+@ Modified for python3 by Shane Hogle 2020-05-01. MIT/UTU
+@ Sara Collins.  MIT.  3/18/2015
 '''
 
 import sys
@@ -36,8 +39,8 @@ from xml.dom.minidom import *
 ### Get lat and lon from command line argument list
 ###--------------------------------------------------------------------------
 
-ppFileName = string(sys.argv[1])
-imgFileName = string(sys.argv[2])	
+myLat = float(sys.argv[1])
+myLon = float(sys.argv[2])	
 	
 	
 ### Parse GML data from longhurst.xml
@@ -129,28 +132,22 @@ for node in tree.getElementsByTagName('MarineRegions:longhurst'):
 ### Print solution to terminal.
 ###--------------------------------------------------------------------------
 
+
 solution = []
 for i in inProvince:
 	if inProvince[i] == True:
 		solution.append([provinces[i]['provCode'], provinces[i]['provName']])
 
 if len(solution)==0:
-	print
-	print 'No province found matching ', myLat, 'N, ', myLon, 'E.  '
-	print 'This coordinate is either on land or it could be in one of these... '
+	print('No province found matching ', myLat, 'N, ', myLon, 'E.  ')
+	print('This coordinate is either on land or it could be in one of these... ')
 	for i in inProvince:
-		print provinces[i]['provCode'], '\t', provinces[i]['provName']
-	print
-	
-elif len(solution) == 1:
-	print
-	print myLat, 'N, ', myLon, 'E -->  ', solution[0][0], '\t', solution[0][1]
-	print
-	
-elif len(solution) > 1:
-	print
-	print 'Conflict between these provinces... '
+		print(provinces[i]['provCode'], '\t', provinces[i]['provName'])
+
+if len(solution) == 1:
+	print(myLat, 'N, ', myLon, 'E -->  ', solution[0][0], '\t', solution[0][1])
+
+if len(solution) > 1:
+	print('Conflict between these provinces... ')
 	for i in solution:
-		print solution[0][0], '\t', solution[0][1]
-	print
-		
+		print(solution[0][0], '\t', solution[0][1])
