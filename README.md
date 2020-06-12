@@ -1,7 +1,7 @@
 # Longhurst-Province-Finder
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3786234.svg)](https://doi.org/10.5281/zenodo.3786234)
 
-Takes a tsv file in format sampleID\tlatitude\tlongitude\n" and 
+Takes a tsv file in format `sampleID\tlatitude\tlongitude\n` and 
 returns an output with with Longhurst codes and the description of
 the Longhurst Province where the coordinate is located. It works by parsing a file that
 contains lat/long coordinates that bound each province and performing the Crossings Test
